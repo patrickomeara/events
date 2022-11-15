@@ -10,4 +10,11 @@ class ProjectsController extends Controller
     {
         Project::factory()->create();
     }
+
+    public function update()
+    {
+        Project::query()->inRandomOrder()->first()->update([
+            'title' => 'New title',
+        ]);
+    }
 }
