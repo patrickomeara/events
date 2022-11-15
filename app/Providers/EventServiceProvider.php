@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use App\Events\Concerns\SendsIntercomEvent;
 use App\Events\Concerns\SendsZapierEvent;
 use App\Events\ProjectArchivedEvent;
 use App\Events\ProjectUpdatedEvent;
 use App\Listeners\ProjectArchivedListener;
 use App\Listeners\ProjectUpdatedListener;
+use App\Listeners\SendsIntercomEventListener;
 use App\Listeners\SendsZapierEventListener;
 use App\Models\Task;
 use App\Observers\TaskObserver;
@@ -44,6 +46,7 @@ class EventServiceProvider extends ServiceProvider
         Task::observe(TaskObserver::class);
 
         Event::listen(SendsZapierEvent::class, SendsZapierEventListener::class);
+        Event::listen(SendsIntercomEvent::class, SendsIntercomEventListener::class);
     }
 
     /**
