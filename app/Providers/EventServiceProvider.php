@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Events\ProjectArchivedEvent;
 use App\Events\ProjectUpdatedEvent;
+use App\Listeners\ProjectArchivedListener;
 use App\Listeners\ProjectUpdatedListener;
 use App\Models\Task;
 use App\Observers\TaskObserver;
@@ -23,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         ProjectUpdatedEvent::class => [
             ProjectUpdatedListener::class,
+        ],
+        ProjectArchivedEvent::class => [
+            ProjectArchivedListener::class,
         ],
     ];
 
