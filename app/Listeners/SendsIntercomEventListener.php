@@ -6,7 +6,7 @@ use App\Events\Concerns\SendsIntercomEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class SendsIntercomEventListener
+class SendsIntercomEventListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -26,6 +26,8 @@ class SendsIntercomEventListener
      */
     public function handle(SendsIntercomEvent $event)
     {
-        dump("Event sent to Intercom: {$event->toIntercom()->eventName}");
+        $data = $event->toIntercom();
+
+        ray("Event sent to Intercom: {$data->eventName} by {$data->user->name}");
     }
 }

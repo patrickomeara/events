@@ -18,6 +18,6 @@ class TasksController extends Controller
         $task->update([
             'closed_at' => now(),
         ]);
-        TaskClosedEvent::dispatch($task);
+        TaskClosedEvent::dispatch($task, request()->user());
     }
 }

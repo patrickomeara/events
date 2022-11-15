@@ -39,6 +39,8 @@ Route::middleware(['auth', 'verified'])
 
         // http://events.test/tasks/close
         Route::get('tasks/close', [TasksController::class, 'close'])->name('tasks.closed');
+
+        // http://events.test/telescope
     });
 
 require __DIR__.'/auth.php';
