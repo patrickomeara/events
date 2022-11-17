@@ -38,9 +38,11 @@ Route::middleware(['auth', 'verified'])
         // https://github.com/laravel/framework/blob/98a03013ed74925f68040beee0937203b632f57d/src/Illuminate/Events/Dispatcher.php#L362-L380
 
         // http://events.test/tasks/close
-        Route::get('tasks/close', [TasksController::class, 'close'])->name('tasks.closed');
+        Route::get('tasks/close', [TasksController::class, 'close'])->name('tasks.close');
 
         // http://events.test/telescope
+
+        // https://laravel.com/docs/master/authentication#events
     });
 
 require __DIR__.'/auth.php';
