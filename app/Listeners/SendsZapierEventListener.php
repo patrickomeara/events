@@ -6,7 +6,7 @@ use App\Events\Concerns\SendsZapierEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 
-class SendsZapierEventListener
+class SendsZapierEventListener implements ShouldQueue
 {
     /**
      * Create the event listener.
@@ -26,6 +26,6 @@ class SendsZapierEventListener
      */
     public function handle(SendsZapierEvent $event)
     {
-        dump("Event sent to Zapier: {$event->toZapier()->eventName}");
+        ray("Event sent to Zapier: {$event->toZapier()->eventName}");
     }
 }

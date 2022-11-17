@@ -7,6 +7,7 @@ use App\Events\Concerns\SendsZapierEvent;
 use App\Events\Data\IntercomEventData;
 use App\Events\Data\ZapierEventData;
 use App\Models\Task;
+use App\Models\User;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
@@ -19,7 +20,7 @@ class TaskClosedEvent implements SendsZapierEvent, SendsIntercomEvent
      *
      * @return void
      */
-    public function __construct(public Task $task)
+    public function __construct(public Task $task, public User $user)
     {
         //
     }
@@ -42,6 +43,7 @@ class TaskClosedEvent implements SendsZapierEvent, SendsIntercomEvent
     public function toIntercom(): IntercomEventData
     {
         return new IntercomEventData(
+            user: $this->user,
             eventName: 'task_closed',
             meta: [
                 'task_id' => $this->task->id,
