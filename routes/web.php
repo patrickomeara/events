@@ -31,6 +31,9 @@ Route::middleware(['auth', 'verified'])
 
         // http://events.test/projects/update
         Route::get('projects/update', [ProjectsController::class, 'update'])->name('projects.update');
+
+        // http://events.test/projects/archive
+        Route::get('projects/archive', [ProjectsController::class, 'archive'])->name('projects.archive');
     });
 
 require __DIR__.'/auth.php';
