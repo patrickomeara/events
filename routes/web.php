@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProjectsController;
+use App\Http\Controllers\TasksController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,9 @@ Route::middleware(['auth', 'verified'])
 
         // http://events.test/projects/create
         Route::get('projects/create', [ProjectsController::class, 'create'])->name('projects.create');
+
+        // http://events.test/tasks/create
+        Route::get('tasks/create', [TasksController::class, 'create'])->name('tasks.create');
     });
 
 require __DIR__.'/auth.php';
