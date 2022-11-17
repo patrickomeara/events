@@ -28,6 +28,9 @@ Route::middleware(['auth', 'verified'])
 
         // http://events.test/tasks/create
         Route::get('tasks/create', [TasksController::class, 'create'])->name('tasks.create');
+
+        // http://events.test/projects/update
+        Route::get('projects/update', [ProjectsController::class, 'update'])->name('projects.update');
     });
 
 require __DIR__.'/auth.php';
