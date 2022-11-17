@@ -4,8 +4,9 @@
 
 ## A guide to Laravel's event system.
 
-Laravel has a powerful event system that allows listening to events and take action when they occur.
+Laravel has a powerful event system that allows listening to events and taking action when they occur.
+
+I initially presented this talk at PHP Melbourne in November 2022.
 
 This repository contains a simple Laravel application that demonstrates how to use the event system.
 
-I initially presented it at PHP Melbourne in November 2022.
