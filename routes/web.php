@@ -34,6 +34,11 @@ Route::middleware(['auth', 'verified'])
 
         // http://events.test/projects/archive
         Route::get('projects/archive', [ProjectsController::class, 'archive'])->name('projects.archive');
+
+        // https://github.com/laravel/framework/blob/98a03013ed74925f68040beee0937203b632f57d/src/Illuminate/Events/Dispatcher.php#L362-L380
+
+        // http://events.test/tasks/close
+        Route::get('tasks/close', [TasksController::class, 'close'])->name('tasks.closed');
     });
 
 require __DIR__.'/auth.php';

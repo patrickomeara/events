@@ -9,10 +9,6 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $dispatchesEvents = [
-        'updated' => \App\Events\ProjectUpdatedEvent::class,
-    ];
-
     protected static function booted()
     {
         static::created(function (Project $project) {

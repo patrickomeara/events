@@ -2,15 +2,20 @@
 
 namespace App\Providers;
 
+use App\Events\Concerns\SendsIntercomEvent;
+use App\Events\Concerns\SendsZapierEvent;
 use App\Events\ProjectArchivedEvent;
 use App\Events\ProjectUpdatedEvent;
 use App\Listeners\ProjectArchivedListener;
 use App\Listeners\ProjectUpdatedListener;
+use App\Listeners\SendsIntercomEventListener;
+use App\Listeners\SendsZapierEventListener;
 use App\Models\Task;
 use App\Observers\TaskObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -39,6 +44,9 @@ class EventServiceProvider extends ServiceProvider
     public function boot()
     {
         Task::observe(TaskObserver::class);
+
+        Event::listen(SendsZapierEvent::class, SendsZapierEventListener::class);
+        Event::listen(SendsIntercomEvent::class, SendsIntercomEventListener::class);
     }
 
     /**

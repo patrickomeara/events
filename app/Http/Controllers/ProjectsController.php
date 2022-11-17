@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Events\ProjectArchivedEvent;
+use App\Events\ProjectUpdatedEvent;
 use App\Models\Project;
 
 class ProjectsController extends Controller
@@ -14,9 +15,12 @@ class ProjectsController extends Controller
 
     public function update()
     {
-        Project::query()->inRandomOrder()->first()->update([
+        $project = Project::query()->inRandomOrder()->firstOrFail();
+        $project->update([
             'title' => 'New title',
         ]);
+
+        ProjectUpdatedEvent::dispatch($project);
     }
 
     public function archive()
